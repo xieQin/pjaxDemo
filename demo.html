@@ -29,14 +29,40 @@
     <div id="tab1">1</div>
     <div id="tab2">2</div>
     <script type="text/javascript">
-    	$("#tab1_header").click(function() {
+    	// $("#tab1_header").click(function() {
+    	// 	$("#tab2").hide();
+    	// 	$("#tab1").show();
+    	// });
+    	// $("#tab2_header").click(function() {
+    	// 	$("#tab1").hide();
+    	// 	$("#tab2").show();
+    	// });
+    	showTab();
+    	$(window).bind('hashchange', function(e) {
+    		showTab();
+    	});
+    	$("#tab1_header").click(showTab1);
+    	$("#tab2_header").click(showTab2);
+
+    	function showTab() {
+    		if(window.location.hash == "#tab2") {
+    			showTab2();
+    		} else {
+    			showTab1();
+    		}
+    	}
+
+    	function showTab1() {
     		$("#tab2").hide();
     		$("#tab1").show();
-    	});
-    	$("#tab2_header").click(function() {
+    		window.location.hash = "#tab1";
+    	}
+
+    	function showTab2() {
     		$("#tab1").hide();
     		$("#tab2").show();
-    	});
+    		window.location.hash = "#tab2";
+    	}
     </script>
 </body>
 </html>
